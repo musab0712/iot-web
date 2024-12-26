@@ -583,6 +583,41 @@ header .fa-bars {
 
 /* About-us Page end*/
 
+/* Contact us page start */
+
+.contact-p {
+  text-align: center;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 60px;
+}
+
+.contact-card {
+  flex: 1 1 40rem;
+  padding: 4rem 4rem;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+  border: 0.1rem solid rgba(0, 0, 0, 0.1);
+  background: #fff;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.contact-card-img {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.contact-card-img img {
+  height: 5rem;
+  padding-bottom: 1rem;
+}
+
+.contact-card-img h1 span {
+  color: var(--pink);
+}
+
+/* Contact us page end */
+
 /* media queries  */
 @media (max-width: 991px) {
   html {
