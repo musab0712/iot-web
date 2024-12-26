@@ -14,6 +14,7 @@
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   </head>
   <body>
     <!-- header section starts  -->
@@ -333,17 +334,35 @@
       <h1 class="heading"><span> contact </span> us</h1>
 
       <div class="row">
-        <form action="">
-          <input type="text" placeholder="name" class="box" />
-          <input type="email" placeholder="email" class="box" />
-          <input type="number" placeholder="number" class="box" />
-          <textarea
-            name=""
+        <form id="contact-form">
+          <input
+            type="text"
+            placeholder="Name"
             class="box"
-            placeholder="message"
-            id=""
+            name="user_name"
+            required
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            class="box"
+            name="user_email"
+            required
+          />
+          <input
+            type="number"
+            placeholder="Number"
+            class="box"
+            name="user_number"
+            required
+          />
+          <textarea
+            class="box"
+            placeholder="Message"
+            name="message"
             cols="30"
             rows="10"
+            required
           ></textarea>
           <input type="submit" value="send message" class="btn" />
         </form>
@@ -431,6 +450,28 @@
 
       // Auto slide (optional)
       setInterval(showNextSlide, 5000); // Change slide every 5 seconds
+
+      // Initialize EmailJS
+      emailjs.init("TTxWD8DudA-i8e-M2"); // Replace 'your-user-ID' with your EmailJS user ID
+
+      // Form submission handler
+      document
+        .getElementById("contact-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent default form submission
+
+          emailjs.sendForm("mh-dgsketch", "template_x38ldkr", this).then(
+            function (response) {
+              alert("Message sent successfully!");
+              setTimeout(function () {
+                document.getElementById("contact-form").reset(); // Reset all form fields
+              }, 1000);
+            },
+            function (error) {
+              alert("Failed to send message. Please try again later.");
+            }
+          );
+        });
     </script>
   </body>
 </html>
