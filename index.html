@@ -42,7 +42,7 @@
 
     <!-- home starts  -->
 
-    <section class="home" id="home">
+    <!-- <section class="home" id="home">
       <div class="content">
         <h3>Europe</h3>
         <span> Natural & Beautiful Places </span>
@@ -52,7 +52,40 @@
         </p>
         <a href="#" class="btn">Travel Now</a>
       </div>
-    </section>
+    </section> -->
+    <!-- <section> -->
+    <div class="slider-container">
+      <div class="slider">
+        <div class="slide">
+          <img
+            src="https://via.placeholder.com/800x400/ff7f7f/333333"
+            alt="Slide 1"
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://via.placeholder.com/800x400/7f7fff/333333"
+            alt="Slide 2"
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://via.placeholder.com/800x400/7fff7f/333333"
+            alt="Slide 3"
+          />
+        </div>
+      </div>
+      <div class="navigation">
+        <button class="prev">&lt;</button>
+        <button class="next">&gt;</button>
+      </div>
+      <div class="indicators">
+        <span class="indicator"></span>
+        <span class="indicator"></span>
+        <span class="indicator"></span>
+      </div>
+    </div>
+    <!-- </section> -->
 
     <!-- home ends -->
 
@@ -152,7 +185,7 @@
             <img src="images/img-1.jfif" alt="" />
             <div class="icons">
               <!-- <a href="#" class="fas fa-heart"></a> -->
-              <a href="#" class="cart-btn">Read More</a>
+              <a href="./html/water-level.html" class="cart-btn">Read More</a>
               <!-- <a href="#" class="fas fa-share"></a> -->
             </div>
           </div>
@@ -166,7 +199,9 @@
           <div class="image">
             <img src="images/img-2.jfif" alt="" />
             <div class="icons">
-              <a href="#" class="cart-btn">Read More</a>
+              <a href="./html/pressure-protection.html" class="cart-btn"
+                >Read More</a
+              >
             </div>
           </div>
           <div class="content">
@@ -178,7 +213,7 @@
           <div class="image">
             <img src="images/img-2.jfif" alt="" />
             <div class="icons">
-              <a href="#" class="cart-btn">Read More</a>
+              <a href="./html/dry-run.html" class="cart-btn">Read More</a>
             </div>
           </div>
           <div class="content">
@@ -190,7 +225,9 @@
           <div class="image">
             <img src="images/img-2.jfif" alt="" />
             <div class="icons">
-              <a href="#" class="cart-btn">Read More</a>
+              <a href="./html/water-automation.html" class="cart-btn"
+                >Read More</a
+              >
             </div>
           </div>
           <div class="content">
@@ -202,11 +239,11 @@
           <div class="image">
             <img src="images/img-2.jfif" alt="" />
             <div class="icons">
-              <a href="#" class="cart-btn">Read More</a>
+              <a href="./html/water-level.html" class="cart-btn">Read More</a>
             </div>
           </div>
           <div class="content">
-            <h3>Water label Monotering</h3>
+            <h3>Water lavel Monitering</h3>
           </div>
         </div>
       </div>
@@ -333,10 +370,10 @@
 
         <div class="box">
           <h3>Products</h3>
-          <a href="#">Water label Monotering</a>
-          <a href="#">Pressure Protection</a>
-          <a href="#">Dry Run Protection</a>
-          <a href="#">Fully Water Automation</a>
+          <a href="./html/water-level.html">Water lavel Monitering</a>
+          <a href="./html/pressure-protection.html">Pressure Protection</a>
+          <a href="./html/dry-run.html">Dry Run Protection</a>
+          <a href="./html/water-automation.html">Fully Water Automation</a>
         </div>
 
         <div class="box">
@@ -356,5 +393,44 @@
 
     <!-- footer section ends -->
     <!-- <script src="./js/script.js"></script> -->
+    <script>
+      const slider = document.querySelector(".slider");
+      const slides = document.querySelectorAll(".slide");
+      const prevBtn = document.querySelector(".prev");
+      const nextBtn = document.querySelector(".next");
+      const indicators = document.querySelectorAll(".indicator");
+
+      let currentIndex = 0;
+
+      function updateSlider() {
+        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        indicators.forEach((indicator, index) => {
+          indicator.classList.toggle("active", index === currentIndex);
+        });
+      }
+
+      function showNextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateSlider();
+      }
+
+      function showPrevSlide() {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateSlider();
+      }
+
+      nextBtn.addEventListener("click", showNextSlide);
+      prevBtn.addEventListener("click", showPrevSlide);
+
+      indicators.forEach((indicator, index) => {
+        indicator.addEventListener("click", () => {
+          currentIndex = index;
+          updateSlider();
+        });
+      });
+
+      // Auto slide (optional)
+      setInterval(showNextSlide, 5000); // Change slide every 5 seconds
+    </script>
   </body>
 </html>
