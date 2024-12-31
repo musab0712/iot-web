@@ -4,7 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About</title>
-
+    <link
+      rel="icon"
+      type="image/ico"
+      sizes="32x32"
+      href="./../images/favicon.ico"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -12,13 +17,14 @@
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="./../css/style.css" />
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   </head>
   <body>
     <header>
       <input type="checkbox" name="" id="toggler" />
       <label for="toggler" class="fas fa-bars"></label>
 
-      <a href="#" class="logo">IOT Web <span>Hub</span></a>
+      <a href="/index.html" class="logo">IOT Auto <span>Hub</span></a>
 
       <nav class="navbar">
         <a href="./../index.html">Home</a>
@@ -45,20 +51,23 @@
           <h2 class="heading">Who We <span>Are</span></h2>
 
           <p class="about-details-p">
-            At IOT Web Hub, we are dedicated to connecting people with the best
-            travel experiences across Europe. Our team is passionate about
-            providing reliable and enjoyable travel services. Lorem ipsum dolor
-            sit amet, consectetur adipisicing elit. Omnis, unde odit sequi porro
-            reprehenderit maxime sit sint fugit dolorem. Sunt fugit similique
-            esse? Commodi iste consectetur ea enim culpa odio.
+            Technology integration refers to the process of incorporating
+            technology into a company's operations, systems, and strategies to
+            enhance efficiency, productivity, and innovation. It involves the
+            seamless co-ordination of digital tools, software, and hardware
+            across various departments to optimize workflows, improve
+            communication, and deliver better products or services.
           </p>
           <p class="about-details-p">
-            At IOT Web Hub, we are dedicated to connecting people with the best
-            travel experiences across Europe. Our team is passionate about
-            providing reliable and enjoyable travel services. Lorem ipsum dolor
-            sit amet, consectetur adipisicing elit. Omnis, unde odit sequi porro
-            reprehenderit maxime sit sint fugit dolorem. Sunt fugit similique
-            esse? Commodi iste consectetur ea enim culpa odio.
+            The IoT-based Water Tank Monitoring System is an intelligent
+            solution comprising an IoT gateway, an industrial-grade water level
+            sensor, and intelligent connectivity. This system enables remote
+            monitoring of water tank levels through a centralized web-based
+            dashboard. Designed for installation in various locations, it
+            provides real-time insights and control. The solution has two main
+            pillars: the IoT gateway for data processing and communication, and
+            the water level sensor for accurate measurement, ensuring efficient
+            water management
           </p>
         </div>
       </div>
@@ -67,15 +76,19 @@
         <div class="mission">
           <h2>Our Mission</h2>
           <p>
-            To provide our customers with the most reliable and enjoyable travel
-            experiences.
+            To revolutionize industries by delivering innovative and intelligent
+            IoT solutions that enable seamless connectivity, enhance operational
+            efficiency, and provide actionable insights for a smarter,
+            sustainable future.
           </p>
         </div>
         <div class="vision">
           <h2>Our Vision</h2>
           <p>
-            To be the leading travel service provider in Europe, known for our
-            commitment to customer satisfaction and innovation.
+            To be a global leader in IoT innovation, empowering businesses and
+            individuals with cutting-edge technology that fosters connectivity,
+            drives automation, and transforms everyday challenges into
+            opportunities for growth and sustainability.
           </p>
         </div>
       </div>
@@ -87,35 +100,54 @@
       <h1 class="heading"><span> Enquiry </span> now</h1>
 
       <div class="row">
-        <form action="">
-          <input type="text" placeholder="name" class="box" />
-          <input type="email" placeholder="email" class="box" />
-          <input type="number" placeholder="number" class="box" />
-          <textarea
-            name=""
+        <form id="contact-form">
+          <input
+            type="text"
+            placeholder="Name"
             class="box"
-            placeholder="message"
-            id=""
+            name="user_name"
+            required
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            class="box"
+            name="user_email"
+            required
+          />
+          <input
+            type="number"
+            placeholder="Number"
+            class="box"
+            name="user_number"
+            required
+          />
+          <textarea
+            class="box"
+            placeholder="Message"
+            name="message"
             cols="30"
             rows="10"
+            required
           ></textarea>
           <input type="submit" value="send message" class="btn" />
         </form>
 
         <div class="image">
-          <img src="./../images/contact-img.svg" alt="" />
+          <img src="./../images/contact-us.webp" alt="" />
         </div>
       </div>
+      >
     </section>
 
     <!-- Call to Action Section -->
     <section class="cta">
-      <h1>Join Us on Our Journey!</h1>
+      <h1>Get in Touch Today and Start Your IoT Journey with Us!</h1>
       <p>
-        Ready to explore Europe with us? Contact us today to learn more about
-        our services!
+        Ready to explore with us? Contact us today to learn more about our
+        products!
       </p>
-      <a href="#contact" class="btn">Contact Us</a>
+      <a href="./contact-us.html" class="cta-btn">Contact Us</a>
     </section>
     <!-- Footer -->
     <section class="footer">
@@ -150,5 +182,28 @@
         reserved |
       </div>
     </section>
+    <script>
+      // Initialize EmailJS
+      emailjs.init("TTxWD8DudA-i8e-M2"); // Replace 'your-user-ID' with your EmailJS user ID
+
+      // Form submission handler
+      document
+        .getElementById("contact-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent default form submission
+
+          emailjs.sendForm("mh-dgsketch", "template_x38ldkr", this).then(
+            function (response) {
+              alert("Message sent successfully!");
+              setTimeout(function () {
+                document.getElementById("contact-form").reset(); // Reset all form fields
+              }, 1000);
+            },
+            function (error) {
+              alert("Failed to send message. Please try again later.");
+            }
+          );
+        });
+    </script>
   </body>
 </html>
